@@ -2,5 +2,5 @@
 # I only hide things I do not want found (note to self: stop writing notes to self)
 
 User-agent: *
-Disallow: /OBZG63DBMJHWG5BSGY/definitely-not-the-budget/
+Disallow: /OBZG63DBMJHWG5BSGY/definitely-not-budget/
 Disallow: /OBZG63DBMJHWG5BSGY/abg-gur-ohqtrg/
