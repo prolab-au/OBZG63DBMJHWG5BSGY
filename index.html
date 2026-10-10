@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+	
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>My Totally Normal Hardware Wishlist</title>
+
+		<!-- TODO: remove this page before anyone finds it. (Nobody is going to look here anyway.) -->
+
+		<style>
+		  :root { --paper:#eceff4; --ink:#1d1b2e; --pink:#c2185b; --green:#2e7d32; }
+		  * { box-sizing: border-box; }
+		  html, body { height: 100%; margin: 0; }
+		  body { background: var(--paper); color: var(--ink); font: 17px/1.55 Georgia, serif; overflow-x: hidden; }
+		  h1 { font: 700 clamp(1.8rem, 5vw, 3rem) "Trebuchet MS", sans-serif; margin: 0 0 .3em; }
+		  #stage { position: relative; min-height: 100vh; padding: 8vh 6vw; }
+		  #stage p { max-width: 34em; }
+		  #taunt { min-height: 3.2em; color: var(--pink); font-weight: 700; }
+		  #btn { position: absolute; top: 55vh; left: 6vw; padding: .8em 1.4em; font: 700 1rem "Trebuchet MS", sans-serif;
+		         background: var(--green); color: #fff; border: 0; border-radius: 6px; cursor: pointer; transition: top .15s, left .15s; }
+		  #btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+		  #wishlist { max-width: 38em; margin: 0 auto; padding: 8vh 6vw; }
+		  #wishlist article { border-left: 4px solid var(--pink); padding-left: 1em; margin-bottom: 2em; }
+		  #wishlist small { color: #555; font-family: "Trebuchet MS", sans-serif; }
+		  @media (prefers-reduced-motion: reduce) { #btn { transition: none; } }
+		</style>
+
+	</head>
+	
+	<body>
+
+		<div id="stage">
+
+		  <h1>My Totally Normal Hardware Wishlist</h1>
+
+		  <p>Welcome, dear visitor. Nothing to see here, just a hobbyist writing about graphics cards.</p>
+		  <p id="taunt" aria-live="polite">Click the button to read my posts.</p>
+
+		  <button id="btn" type="button">Read my posts</button>
+
+		</div>
+
+		<!-- Posts are hidden from the page. Reading them takes effort. -->
+
+		<section id="wishlist" hidden>
+
+		  <h1>Wishlist</h1>
+
+		  <article>
+
+		    <h2>Post 1: Why I deserve a better GPU</h2>
+		    <small>by gpu_hunter_77, 14 October, 01:52</small>
+		    <p>I will not rest until I recieve the hardware I deserve. Every day I recieve nothing but disappointment from those lab machines.</p>
+
+		  </article>
+
+		  <article>
+
+		    <h2>Post 2: Late-night thoughts</h2>
+		    <small>by gpu_hunter_77, 14 October, 02:10</small>
+		    <p>Working late again. The building is so quiet. Nobody around to bother me, which suits my plans perfectly.</p>
+
+		  </article>
+
+		  <article>
+
+		    <h2>Post 3: A note to my fans</h2>
+		    <small>by lntern_admin (yes, that is a lowercase L), 14 October, 03:30</small>
+		    <p>If anyone asks, I was never here. Also, I own no suspicious paperwork.</p>
+
+		  </article>
+
+		  <!-- The thing you are looking for is not on this page. Check the file crawlers are told to ignore: robots.txt -->
+
+		</section>
+
+		<script>
+		
+		  var btn = document.getElementById("btn");
+		  var taunt = document.getElementById("taunt");
+		  var count = 0;
+
+		  var messages = [
+		    "Too slow.",
+		    "Missed me.",
+		    "Is your mouse okay?",
+		    "My grandmother clicks faster, and she is a toaster.",
+		    "Oh, you are really trying. Adorable.",
+		    "Lab PCs take 14 minutes to boot and you still have less patience.",
+		    "Keep chasing. I have all night.",
+		    "Maybe stop chasing the button and look at what it is made of.",
+		    "Still here? Impressive. Annoying, but impressive.",
+		    "Detectives do not click. They inspect.",
+		    "Every page has a source. Every source has secrets.",
+		    "Okay, I am getting bored of this too.",
+		    "Fine. Press Ctrl+U, or right-click and choose View Page Source. The posts are in there.",
+		    "Seriously. Ctrl+U. The rest is on you, detective."
+		  ];
+
+		  function dodge() {
+		    var maxX = window.innerWidth - btn.offsetWidth - 10;
+		    var maxY = window.innerHeight - btn.offsetHeight - 10;
+		    btn.style.left = Math.max(10, Math.floor(Math.random() * maxX)) + "px";
+		    btn.style.top = Math.max(10, Math.floor(Math.random() * maxY)) + "px";
+		    taunt.textContent = messages[Math.min(count, messages.length - 1)];
+		    count++;
+		  }
+
+		  btn.addEventListener("mouseover", dodge);
+		  btn.addEventListener("touchstart", function (e) { e.preventDefault(); dodge(); }, { passive: false });
+		  btn.addEventListener("click", function (e) {
+		    e.preventDefault();
+		    taunt.textContent = e.detail === 0 ? "Keyboard? Bold. Still no." : "A click! Lucky, but no.";
+		    dodge();
+		  });
+
+		</script>
+
+	</body>
+</html>
